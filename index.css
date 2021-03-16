@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(0, 87, 90);
+    overflow: hidden;
+}
+
+
+.divCal{
+    background-color:rgb(165, 165, 165);
+    width: 400px;
+    height: 335px;
+    margin: calc(50vh - 170px) auto;
+    border: 1px solid red;
+}
+.divCal > h1,
+.divCal > div{
+    width:100%;
+    
+}
+
+.mostrador{
+    background-color:rgb(165, 165, 165);
+}
+
+.textoMostrador{
+    text-align: right;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.divNumeros{
+    background-color:rgb(165, 165, 165);  
+    display:flex;
+    flex-wrap:wrap;
+    font-size: 20px;
+    justify-content: center;
+    
+}
+.divNumeros > div{
+    width: calc(25% - 3px);
+    border:1px solid #000;
+    font-size: 40px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+.calculadoraTXT{
+font-size: 25px;
+}
+    
