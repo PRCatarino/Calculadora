@@ -6,144 +6,44 @@
     <title>Calculadora</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="reset.css">    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="icon" type="imagem/png" href="/incone.png" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 
 <body>
-<div class="divCal">
-    <h1 class="calculadoraTXT">calculadora</h1>
-    <div class="mostrador">
-        <h1 class="textoMostrador">0</h1>
+    <div class="divCal">
+        <div class="titulo">
+            <h1 class="calculadoraTXT">Calculadora</h1>
+            <i onclick="limpaMostrador()"class="fas fa-backspace iconeApaga"></i>
+        </div>
+    
+        <div class="mostrador">
+            <h1 class="textoMostrador">0</h1>
+        </div>
+
+        <div class="divNumeros">
+            <div onclick="clickTecla(this)">7</div>
+            <div onclick="clickTecla(this)">8</div>
+            <div onclick="clickTecla(this)">9</div>
+            <div onclick="clickTecla(this)">÷</div>
+            <div onclick="clickTecla(this)">4</div>
+            <div onclick="clickTecla(this)">5</div>
+            <div onclick="clickTecla(this)">6</div>
+            <div onclick="clickTecla(this)">×</div>
+            <div onclick="clickTecla(this)">1</div>
+            <div onclick="clickTecla(this)">2</div>
+            <div onclick="clickTecla(this)">3</div>
+            <div onclick="clickTecla(this)">-</div>
+            <div onclick="clickTecla(this)">=</div>
+            <div onclick="clickTecla(this)">0</div>
+            <div onclick="clickTecla(this)">.</div>
+            <div onclick="clickTecla(this)">+</div>
+        </div>
+        
     </div>
-    <div class="divNumeros">
-        <div onclick="clickTecla(this)">7</div>
-        <div onclick="clickTecla(this)">8</div>
-        <div onclick="clickTecla(this)">9</div>
-        <div onclick="clickTecla(this)">÷</div>
-        <div onclick="clickTecla(this)">4</div>
-        <div onclick="clickTecla(this)">5</div>
-        <div onclick="clickTecla(this)">6</div>
-        <div onclick="clickTecla(this)">×</div>
-        <div onclick="clickTecla(this)">1</div>
-        <div onclick="clickTecla(this)">2</div>
-        <div onclick="clickTecla(this)">3</div>
-        <div onclick="clickTecla(this)">-</div>
-        <div onclick="clickTecla(this)">=</div>
-        <div onclick="clickTecla(this)">0</div>
-        <div onclick="clickTecla(this)">.</div>
-        <div onclick="clickTecla(this)">+</div>
-    </div>
-</div>
-<script>
-var numero = 0;
-var valorUm = 0;
-var valordois = 0;
-
-function clickTecla(elemento){
-    let valTela = document.querySelector(".textoMostrador").innerHTML;
-    const valDigitado = elemento.innerHTML;
-    let resultado = 0;
-    console.log(valTela, "valor da tela");
-    console.log(valDigitado,"valor q for digitado");
-
-    if(esimbolo(valTela[valTela.length-1]) && esimbolo(valDigitado)){
-        return 
-    }
- 
-    if(valTela =="0" && !esimbolo(valDigitado)){
-          valTela=""
-    } 
-
-    if(["=","+","-","×","÷"].indexOf(valDigitado)>-1 && procurarSinalTexto(valTela)){      //O valor digitado é igual o =,nesse momento eu faço o calculo 
-                                             
-            if(valTela.indexOf("+") > -1){                           // procuro no conteudo se existi o valor +
-                const numeros = valTela.split("+");                 // estou criando uma lista quebrada por +
-                const numeroUm = Number.parseFloat(numeros[0])       //converte o primeiro item da lista para numero 
-                const numeroDois = Number.parseFloat(numeros[1])    // convertendo o o segundo item da lista para numero
-               
-                resultado = soma(numeroUm, numeroDois)          //chamo a função de soma passando os dois numeros convertidos
-
-                document.querySelector(".textoMostrador").innerHTML = resultado; //escrevendo resultado no div
-            }
-
-            if(valTela.indexOf("-") > -1){                           // procuro no conteudo se existi o valor +
-                const numeros = valTela.split("-");                 // estou criando uma lista quebrada por +
-                const numeroUm = Number.parseFloat(numeros[0])       //converte o primeiro item da lista para numero 
-                const numeroDois = Number.parseFloat(numeros[1])    // convertendo o o segundo item da lista para numero
-               
-                resultado = subtracao(numeroUm, numeroDois)          //chamo a função de soma passando os dois numeros convertidos
-
-                document.querySelector(".textoMostrador").innerHTML = resultado; //escrevendo resultado no div
-            }  
-
-            if(valTela.indexOf("×") > -1){                           // procuro no conteudo se existi o valor +
-                const numeros = valTela.split("×");                 // estou criando uma lista quebrada por +
-                const numeroUm = Number.parseFloat(numeros[0])       //converte o primeiro item da lista para numero 
-                const numeroDois = Number.parseFloat(numeros[1])    // convertendo o o segundo item da lista para numero
-               
-                resultado = multiplicacao(numeroUm, numeroDois)          //chamo a função de soma passando os dois numeros convertidos
-
-
-                document.querySelector(".textoMostrador").innerHTML = resultado; //escrevendo resultado no div
-            }
-
-            if(valTela.indexOf("÷") > -1){                           // procuro no conteudo se existi o valor +
-                const numeros = valTela.split("÷");                 // estou criando uma lista quebrada por +
-                const numeroUm = Number.parseFloat(numeros[0])       //converte o primeiro item da lista para numero 
-                const numeroDois = Number.parseFloat(numeros[1])    // convertendo o o segundo item da lista para numero
-               
-                resultado = divisao(numeroUm, numeroDois)          //chamo a função de soma passando os dois numeros convertidos
-
-                document.querySelector(".textoMostrador").innerHTML = resultado; //escrevendo resultado no div
-            }
-           if(valDigitado !="="){
-            document.querySelector(".textoMostrador").innerHTML = document.querySelector(".textoMostrador").innerHTML + valDigitado;
-
-           }
-            return
-        }
-    document.querySelector(".textoMostrador").innerHTML = valTela + valDigitado;                //atualizo a tela
-}
-function procurarSinalTexto(texto){
-
-    if(texto.indexOf("+")>-1){
-        return true
-    }
-    if(texto.indexOf("-")>-1){
-        return true
-    }
-    if(texto.indexOf("=")>-1){
-        return true
-    }
-    if(texto.indexOf("×")>-1){
-        return true
-    }
-    if(texto.indexOf("÷")>-1){
-        return true
-    }
-}
-
-function soma(numeroUm, numeroDois){
-    return numeroUm + numeroDois;
-}
-function multiplicacao(numeroUm, numeroDois){
-    return numeroUm * numeroDois;
-}
-
-function divisao(numeroUm, numeroDois){
-    return numeroUm / numeroDois;
-}
-function subtracao(numeroUm, numeroDois){
-    return numeroUm - numeroDois;
-}
-
-function esimbolo(texto){
-    if(["=","+","-","×","÷","."].indexOf(texto)>-1){
-    return true        
-    }else{
-        return false
-    }
-}
-
-</script>
+<script src="calculadora.js"></script>
 </body>   
 </html>
