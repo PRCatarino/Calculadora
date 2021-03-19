@@ -5,6 +5,17 @@ var valordois = 0;
 function limpaMostrador(){
     document.querySelector(".textoMostrador").innerHTML = 0;
 }
+function mudaTema(){
+    document.querySelector(".mudaCor").innerHTML ='<i class="fas fa-toggle-off"></i>';
+
+    if(document.querySelector(".divCal").style.filter == "invert(1)"){
+        document.querySelector(".divCal").style.filter = "invert(0)"
+        document.querySelector(".mudaCor").innerHTML ='<i class="fas fa-toggle-on"></i> LIGHT MODE'; 
+    }else{
+        document.querySelector(".divCal").style.filter = "invert(1)"
+        document.querySelector(".mudaCor").innerHTML ='<i class="fas fa-toggle-off"></i> DARK MODE';
+    }    
+}
 
 function clickTecla(elemento){
     let valTela = document.querySelector(".textoMostrador").innerHTML;

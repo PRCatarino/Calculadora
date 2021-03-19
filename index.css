@@ -1,6 +1,12 @@
 body{
     background-color:rgba(0, 0, 0, 0.836);
     overflow: hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position:relative;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .calculadoraTXT{
@@ -14,8 +20,8 @@ margin: 7px 16px -5px;
 .divCal{
     background-color:rgb(29, 29, 29);;
     width: 300px;
-    margin: calc(50vh - 170px) auto;
-    border: 3px solid black
+    border: 3px solid black;
+    filter: invert(0);
 }
 
 .mostrador{
@@ -55,7 +61,6 @@ margin: 7px 16px -5px;
     font-size: 40px;
     padding: 10px 0;
     text-align: center;
-    font-family: Roboto+Mono; 
     background: black;
 }
 .divNumeros > div:hover{
@@ -72,3 +77,20 @@ cursor:pointer;
     margin-top: 15px;
     color: white;
 }
+
+.mudaCor{
+    display:flex;
+    cursor:pointer;
+    position:absolute;
+    top:18px;
+    right:20px;
+    align-items: center;
+}
+
+.mudaCor i{
+    font-size: 20px;
+    margin-right: 4px;
+    
+}
+
+
