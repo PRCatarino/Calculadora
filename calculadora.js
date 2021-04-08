@@ -18,8 +18,8 @@ function mudaTema(){
 }
 
 function clickTecla(elemento){
-    let valTela = document.querySelector(".textoMostrador").innerHTML;
-    const valDigitado = elemento.innerHTML;
+    let valTela = document.querySelector(".textoMostrador").innerText.trim();
+    const valDigitado = elemento.innerText.trim();
     let resultado = 0;
 
     if(esimbolo(valTela[valTela.length-1]) && esimbolo(valDigitado)){
@@ -67,8 +67,7 @@ function clickTecla(elemento){
                 document.querySelector(".textoMostrador").innerHTML = resultado; //escrevendo resultado no div
             }  
             if(valDigitado !="="){
-                document.querySelector(".textoMostrador").innerHTML = document.querySelector(".textoMostrador").innerHTML + valDigitado;
-                
+                document.querySelector(".textoMostrador").innerHTML = document.querySelector(".textoMostrador").innerHTML + valDigitado;    
            }
            return
         }
